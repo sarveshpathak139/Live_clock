@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Live clock</title>
+
+    <style>
+        .clockstyle {
+            font-size: 150px;
+            margin: 0 auto;
+            padding: 10px;
+            color: #000000;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="clockDisplay" class="clockstyle">
+
+    </div>
+
+    <script>
+        function renderTime() {
+            var currentime = new Date();
+            var ampm = "AM";
+            var h = currentime.getHours();
+            var m = currentime.getMinutes();
+            var s = currentime.getSeconds();
+
+            if (h == 0) {
+                h = 12;
+
+            } else if (h > 12) {
+                h = h - 12;
+                ampm = "PM"
+            }
+            if (h < 10) {
+                h = "0" + h;
+
+            }
+            if (m < 10) {
+                m = "0" + m;
+
+            }
+            if (s < 10) {
+                s = "0" + s;
+            }
+
+            var myclock = document.getElementById("clockDisplay");
+            myclock.textContent = h + ":" + m + ":" + s + "" + ampm;
+            setTimeout('renderTime()', 1000);
+        }
+
+        renderTime();
+    </script>
+</body>
+
+</html>
